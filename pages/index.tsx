@@ -1,12 +1,12 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
+import Header from '../components/Header/Header';
 
 
 
 const Home: NextPage = () => {
   return (
-    <main>
-      <h1>test</h1>
-      <p>hello there</p>
+    <main className="relative h-screen overflow-y-scroll">
+      <Header/>
     </main>
   )
 }
