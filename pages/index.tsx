@@ -1,5 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
+import Link from "next/link";
 //Fetch hook
 import { useFetchMovies } from "../api/fetchHooks";
 //Configuration
@@ -22,7 +23,6 @@ const Home: NextPage = () => {
 
     if (scrollHeight - scrollTop === clientHeight) fetchNextPage();
   };
-
 
   return (
     <main
@@ -52,16 +52,20 @@ const Home: NextPage = () => {
         }
       >
         {data && data.pages
-          ? data.pages.map(page =>
-              page.results.map(movie => (
-                <div key={movie.id}>
-                  <div className='cursor-pointer hover:opacity-80 duration-300'>
-                    <Card
-                      imgUrl={movie.poster_path ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path : '/no_image.jpg'}
-                      title={movie.original_title}
-                    />
-                  </div>
-                </div>
+          ? data.pages.map((page) =>
+              page.results.map((movie) => (
+                <Link key={movie.id} href={`${movie.id}`}>
+                    <div className="cursor-pointer hover:opacity-80 duration-300">
+                      <Card
+                        imgUrl={
+                          movie.poster_path
+                            ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                            : "/no_image.jpg"
+                        }
+                        title={movie.original_title}
+                      />
+                    </div>
+                </Link>
               ))
             )
           : null}
