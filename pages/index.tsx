@@ -28,7 +28,7 @@ const Home: NextPage = () => {
 
   return (
     <main
-      className="relative h-screen overflow-y-scroll"
+      className="relative h-screen overflow-y-scroll bg-white"
       onScroll={handleScroll}
     >
       <Header setQuery={setQuery} />
